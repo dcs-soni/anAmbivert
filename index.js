@@ -3,6 +3,7 @@ const chalk = require('chalk');
 let center = require('center-align');
 const chalkAnimation = require('chalkercli');
 
+//Global variables
 const log = console.log;
 let ambivert = 0;
 let introvert = 0;
@@ -85,7 +86,7 @@ Enjoy the quiz and have fun 😋 `);
 }
 
 
-
+//Finds the max of extrovert, introvert, ambivert, neutral
 function findType(extrovert, introvert, ambivert, neutral) {
 
   let ans = [extrovert, introvert, ambivert, neutral];
@@ -99,8 +100,8 @@ function findType(extrovert, introvert, ambivert, neutral) {
     }
   }
   return type;
-  // printEssay(type);
 }
+
 
 function printEssay(type, name) {
   log(chalk.yellow.bold("\nLet's see you fall in which category 😉"));
@@ -108,42 +109,35 @@ function printEssay(type, name) {
 
   if(type === 0){
     log(`
-` + (chalk.redBright.bold.underline("Hey " + name + "!!")) + " You got " + chalk.greenBright.bgBlack("Extraversion") + ` 
+` + (chalk.redBright.bold("Hey " + name + "!!")) + " You got " + chalk.greenBright.bgBlack("Extraversion") + ` 
 
-Extraversion is the state of primarily obtaining gratification from outside oneself.` + chalk.yellow.underline("Extraverts tend to enjoy human interactions and to be enthusiastic") + ", talkative, assertive, and gregarious." + chalk.magentaBright("Extraverts are energized and thrive off being around other people."));
+Extraversion is the state of primarily obtaining gratification from outside oneself.` + chalk.yellow("Extraverts tend to enjoy human interactions and to be enthusiastic") + ", talkative, assertive, and gregarious." + chalk.magentaBright("Extraverts are energized and thrive off being around other people."));
 
   }
 
   else if(type === 1){
     log(`
-` + chalk.redBright.bold.underline("Hey " + name + "!!") + " You're kind of Introvert type person." + `
+` + chalk.redBright.bold("Hey " + name + "!!") + " You're kind of Introvert type person." + `
 
-` + chalk.greenBright.bold("Introversion") + " is the state of being predominantly interested in one's own mental self. Introverts are typically perceived as more reserved or reflective. " + chalk.whiteBright.underline("Introverts often take pleasure in solitary activities such as reading, writing, or meditating.") + " An introvert is likely to " + chalk.underline.yellowBright("enjoy time spent alone") + " and find less reward in time spent with large groups of people. ");
+` + chalk.greenBright.bold("Introversion") + " is the state of being predominantly interested in one's own mental self. Introverts are typically perceived as more reserved or reflective. " + chalk.whiteBright("Introverts often take pleasure in solitary activities such as reading, writing, or meditating.") + " An introvert is likely to " + chalk.yellowBright("enjoy time spent alone") + " and find less reward in time spent with large groups of people. ");
   }
 
   else if(type === 2){
     log(`
 ` + chalk.yellowBright.bold.bgGray("Hey " + name + "!!") + " You're an " + chalk.greenBright.bold.underline("Ambivert") + `
 
-` + "Ambiversion is falling more or less directly in the middle, between" + chalk.underline.bold.magentaBright("Introversion and Extraversion. ") + chalk.blueBright.underline("An ambivert is moderately comfortable with groups and social interaction, but also relishes time alone, away from a crowd.") + " In simpler words, an " + chalk.yellowBright("ambivert") + " is a person whose behaviour changes according to the situation they are in.  " );
+` + "Ambiversion is falling more or less directly in the middle, between" + chalk.bold.magentaBright("Introversion and Extraversion. ") + chalk.blueBright("An ambivert is moderately comfortable with groups and social interaction, but also relishes time alone, away from a crowd.") + " In simpler words, an " + chalk.yellowBright("ambivert") + " is a person whose behaviour changes according to the situation they are in.  " );
   }
 
   else if(type === 3){
-    log("Ahh.. You're" + chalk.yellowBright.bold.underline("neutral") + " Get some life, enjoy and hang out with your friends. Atleast be an" + chalk.blueBright("Ambivert") + " like me 😂");
+    log("Ahh.. You're" + chalk.yellowBright.bold("neutral") + " Get some life, enjoy and hang out with your friends. Atleast be an" + chalk.blueBright("Ambivert") + " like me 😂");
   }
 
 }
 
 
-function pickRandomColor(){
-  colors = ['whiteBright', 'redBright', 'magentaBright', 'yellowBright', 'blueBright'];
-  const randomEle = colors[Math.floor(Math.random() * colors.length)];
-  return randomEle;
-}
-
 //Checks the answer and temporarily set the type of person.
 function play(ques, opt){
-  // let color = pickRandomColor();
   log(chalk.magentaBright.bold(ques));
   log(opt);
   let ans = readlineSync.question(chalk.yellowBright.underline("\nYour answer: "));
@@ -183,19 +177,17 @@ function questionPrint(questionsList){
     play(currentQuestion.question, questionsList[questions.length - 1]['options']);
     
   }
-  type = findType(extrovert, introvert, ambivert, neutral);
-  log("Ex" + extrovert);
-  log("In" + introvert);
-  log("Amb" + ambivert);
-  log("Neu" + neutral);
+  let type = findType(extrovert, introvert, ambivert, neutral);
+
   return type;
 
 }
 
 function playQuiz(){
   name = start(); // name = userName
-  type = questionPrint(questions);
-  printEssay(type, name);
+  // type = questionPrint(questions);
+  // printEssay(type, name);
+  printEssay(questionPrint(questions), name);
 }
 
 
