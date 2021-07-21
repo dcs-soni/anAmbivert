@@ -12,7 +12,6 @@
   "dependencies": {
     "center-align": "^1.0.1",
     "chalk": "^4.1.1",
-    "chalkercli": "^1.6.4",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
   }
 }
