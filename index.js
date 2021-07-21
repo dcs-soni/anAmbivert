@@ -1,7 +1,6 @@
 var readlineSync = require("readline-sync");
 const chalk = require('chalk');
 let center = require('center-align');
-const chalkAnimation = require('chalkercli');
 
 //Global variables
 const log = console.log;
@@ -61,49 +60,9 @@ let questions = [
 
 
 
-
-
-//Start of the game - Description and greetings
-function start() {
-  log(chalk.yellowBright.underline.bold(center(`ARE YOU AN` + chalk.cyanBright.underline.bold(" AMBIVERT??") + `🙃`, 100)));
-  log(` 
-Ambivert - a person who has a balance of ` + chalk.greenBright("extrovert") + ` and ` + chalk.redBright("introvert") + ` features in their personality.`      + chalk.magentaBright.underline(" Are you an ambivert?") + ` That'll be cleared upon finishing the quiz.
-
-Enjoy the quiz and have fun 😋 `);
-
-  while(true){
-    var userName = readlineSync.question("\nMay I have your name please?");
-    if(userName){
-      log(`\nHey ` + chalk.yellow.bold(userName) + " Let's start!!");
-      log(`\nHere are the ` + chalk.yellow.bgBlackBright("QUESTIONS"));
-      break;
-    }else{
-      log(chalk.redBright("Ohh snap :( ") + ` I didn't get your name. Please try again.\n`);
-    }
-  }
-  return userName;
-
-}
-
-
-//Finds the max of extrovert, introvert, ambivert, neutral
-function findType(extrovert, introvert, ambivert, neutral) {
-
-  let ans = [extrovert, introvert, ambivert, neutral];
-  let max = -1;
-  let type = extrovert;
-  for(var i=0; i<ans.length; i++){
-    
-    if(max < ans[i]){
-      max = ans[i];
-      type = i;
-    }
-  }
-  return type;
-}
-
-
+//Logs the type of personality with description
 function printEssay(type, name) {
+
   log(chalk.yellow.bold("\nLet's see you fall in which category 😉"));
   log(chalk.blueBright("----------------------------------------------"));
 
@@ -134,6 +93,27 @@ Extraversion is the state of primarily obtaining gratification from outside ones
   }
 
 }
+
+
+
+
+
+//Finds the max of extrovert, introvert, ambivert, neutral
+function findType(extrovert, introvert, ambivert, neutral) {
+
+  let ans = [extrovert, introvert, ambivert, neutral];
+  let max = -1;
+  let type = extrovert;
+  for(var i=0; i<ans.length; i++){
+    
+    if(ans[i] > max){
+      max = ans[i];
+      type = i;
+    }
+  }
+  return type;
+}
+
 
 
 //Checks the answer and temporarily set the type of person.
@@ -168,9 +148,10 @@ function play(ques, opt){
     log("\nOhh noo😕 you made an invalid choice..");
     play(ques, opt);
   }
+
 }
 
-
+//logs the questions and options
 function questionPrint(questionsList){
   for (var i=0; i<questionsList.length - 1; i++) {
     var currentQuestion = questionsList[i];
@@ -183,6 +164,29 @@ function questionPrint(questionsList){
 
 }
 
+
+//Start of the game - Description and greetings
+function start() {
+  log(chalk.yellowBright.underline.bold(center(`ARE YOU AN` + chalk.cyanBright.underline.bold(" AMBIVERT??") + `🙃`, 100)));
+  log(` 
+Ambivert - a person who has a balance of ` + chalk.greenBright("extrovert") + ` and ` + chalk.redBright("introvert") + ` features in their personality.`      + chalk.magentaBright.underline(" Are you an ambivert?") + ` That'll be cleared upon finishing the quiz.
+
+Enjoy the quiz and have fun 😋 `);
+
+  while(true){
+    var userName = readlineSync.question("\nMay I have your name please?");
+    if(userName){
+      log(`\nHey ` + chalk.yellow.bold(userName) + " Let's start!!");
+      log(`\nHere are the ` + chalk.yellow.bgBlackBright("QUESTIONS"));
+      break;
+    }else{
+      log(chalk.redBright("Ohh snap :( ") + ` I didn't get your name. Please try again.\n`);
+    }
+  }
+  return userName;
+
+}
+
 function playQuiz(){
   name = start(); // name = userName
   // type = questionPrint(questions);
@@ -191,6 +195,6 @@ function playQuiz(){
 }
 
 
-//Quiz starts from here
 
+//Quiz starts from here
 playQuiz();
