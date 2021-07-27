@@ -1,0 +1,28 @@
+{
+  "name": "markTwo-Are-you-an-Ambivert",
+  "version": "1.0.0",
+  "description": "Are you an Introvert? Extrovert? or an Ambivert? 🤨  Play this quiz and find what is your personality!",
+  "main": "index.js",
+  "dependencies": {
+    "center-align": "^1.0.1",
+    "chalk": "^4.1.1",
+    "chalkercli": "^1.6.4",
+    "readline-sync": "^1.4.10",
+    "word-wrap": "^1.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcs-soni/anAmbivert.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcs-soni/anAmbivert/issues"
+  },
+  "homepage": "https://github.com/dcs-soni/anAmbivert#readme"
+}
