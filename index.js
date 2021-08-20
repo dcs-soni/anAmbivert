@@ -167,7 +167,7 @@ function questionPrint(questionsList){
 
 //Start of the game - Description and greetings
 function start() {
-  log(chalk.yellowBright.underline.bold(center(`ARE YOU AN` + chalk.cyanBright.underline.bold(" AMBIVERT??") + `🙃`, 33)));
+  log(chalk.yellowBright.underline.bold(center(`ARE YOU AN` + chalk.cyanBright.underline.bold(" AMBIVERT??") + `🙃`)));
   log(` 
 Ambivert - a person who has a balance of ` + chalk.greenBright("extrovert") + ` and ` + chalk.redBright("introvert") + ` features in their personality.`      + chalk.magentaBright.underline(" Are you an ambivert?") + ` That'll be cleared upon finishing the quiz.
 
